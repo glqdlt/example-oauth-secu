@@ -55,4 +55,10 @@ public class MemberRepoTest {
     public void testIdIsRoleAdmin() {
         Assert.assertEquals("testId",memberRepo.findAll().get(0).getUserId());
     }
+
+    @Test
+    public void roleAdminIsNotNull() {
+
+        Assert.assertEquals("admin",roleRepo.findByName("admin").getName());
+    }
 }
