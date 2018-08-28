@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
-
+// oauth http://projects.spring.io/spring-security-oauth/docs/oauth2.html
 // spring security architecture :  https://spring.io/guides/topicals/spring-security-architecture/
 @Configuration
 @EnableWebSecurity
