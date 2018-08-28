@@ -31,7 +31,7 @@ public class MemberRepoTest {
     public void setUp() {
 
         Role adminRole = new Role();
-        adminRole.setName("admin");
+        adminRole.setRole("admin");
 
         roleRepo.save(adminRole);
 
@@ -59,6 +59,6 @@ public class MemberRepoTest {
     @Test
     public void roleAdminIsNotNull() {
 
-        Assert.assertEquals("admin",roleRepo.findByName("admin").getName());
+        Assert.assertEquals("admin",roleRepo.findByRole("admin").getRole());
     }
 }

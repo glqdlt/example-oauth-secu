@@ -15,5 +15,5 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long seq;
 
-    private String name;
+    private String role;
 }
