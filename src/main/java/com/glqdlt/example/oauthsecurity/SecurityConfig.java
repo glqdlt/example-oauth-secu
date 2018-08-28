@@ -24,6 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     LogoutHandler logoutHandler;
 
+    @Autowired
+    DeniedHandler deniedHandler;
+
     @Override
     public void configure(WebSecurity web) throws Exception 	{
         web.ignoring().antMatchers("/css/**", "/script/**", "image/**", "/fonts/**", "lib/**");
@@ -47,7 +50,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessHandler(logoutHandler)
                 .permitAll()
                 .and()
-                .exceptionHandling().accessDeniedPage("/denied")
+//                .exceptionHandling().accessDeniedPage("/denied")
+//                .and()
+                .exceptionHandling().accessDeniedHandler(deniedHandler)
                 .and()
                 .csrf()
                 .disable();
