@@ -39,20 +39,33 @@ public class SimpleController {
     @GetMapping("/")
     public String home(Principal principal,HttpServletRequest httpServletRequest){
 
+        log.info("home========>");
         log.info("principal : {}",principal.toString());
         Object ss = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         log.info(ss.toString());
         log.info("session id : {}",httpServletRequest.getSession().getId());
 
-        return "/index.html";
+        return "/index";
     }
 
-//    @GetMapping("/login")
-//    public String logins(HttpServletRequest httpServletRequest){
-//
-//        log.info("serssion id :  {}",httpServletRequest.getSession().getId());
-//
-//        return "/login.html";
-//    }
+    @GetMapping("/login")
+    public String logins(HttpServletRequest httpServletRequest){
 
+        log.info("login========>");
+        log.info("serssion id :  {}",httpServletRequest.getSession().getId());
+
+        return "/login";
+    }
+
+
+    @GetMapping("/some")
+    public String some(Principal principal,HttpServletRequest httpServletRequest){
+
+        log.info("some========>");
+        log.info("principal : {}",principal.toString());
+        Object ss = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        log.info(ss.toString());
+        log.info("session id : {}",httpServletRequest.getSession().getId());
+        return "/some";
+    }
 }

@@ -9,7 +9,8 @@
 <!-- thymeleaf 가 적용이 안되어서 파싱을 안해서 hasRole이 안먹히는 거 였다.-->
 <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
     Logged in user: <span sec:authentication="name"></span> |
-    Roles: <span sec:authentication="name"></span>
+    Roles: <span sec:authentication="authorities"></span>
+    principal: <span sec:authentication="principal.authorities"></span>
 
 
     <div>
@@ -18,12 +19,6 @@
 </div>
 
 
-<div sec:authentication="hasRole('ROLE_ADMIN')">
-    <p>admin</p>
-</div>
-<div sec:authentication="hasRole('ROLE_USER')">
-    <p>user</p>
-</div>
 <h1>Hello Spring Security</h1>
 <p>This is an unsecured page, but you can access the secured pages after authenticating.</p>
 <ul>

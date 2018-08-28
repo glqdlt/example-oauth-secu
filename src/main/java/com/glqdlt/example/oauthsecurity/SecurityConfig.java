@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,6 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        스프링 시큐리티와 서블릿 세션간의 매커니즘 차이
+//        https://www.baeldung.com/spring-security-session
+        http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.NEVER);
+
         http
                 .authorizeRequests()
                 .antMatchers("/","/some").hasRole("ADMIN")
