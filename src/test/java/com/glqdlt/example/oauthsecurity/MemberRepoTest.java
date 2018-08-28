@@ -1,6 +1,7 @@
 package com.glqdlt.example.oauthsecurity;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,10 +53,6 @@ public class MemberRepoTest {
 
     @Test
     public void testIdIsRoleAdmin() {
-
-
-        memberRepo.findAll().forEach(x -> log.info(x.toString()));
-
-
+        Assert.assertEquals("testId",memberRepo.findAll().get(0).getUserId());
     }
 }
