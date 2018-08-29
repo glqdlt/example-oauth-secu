@@ -20,7 +20,7 @@ public class ControllerLogger {
             if(arg instanceof HttpServletRequest){
                 HttpServletRequest httpServletRequest = (HttpServletRequest) arg;
                 log.info("=========================================================================================");
-                log.info("signature : {} ,method name : {} , httpServletRequest ID : {}",joinPoint.getSignature().toShortString(), joinPoint.getSignature().getName() ,httpServletRequest.getSession().getId());
+                log.info("Method  : {} .. {} , Session : {}",joinPoint.getSignature().toShortString(), joinPoint.getSignature().getName() ,httpServletRequest.getSession().getId());
                 log.info("IP : {} .. {} ",httpServletRequest.getRemoteHost(),httpServletRequest.getRemoteAddr());
                 log.info("=========================================================================================");
             }
