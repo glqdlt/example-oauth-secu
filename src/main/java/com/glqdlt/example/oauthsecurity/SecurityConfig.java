@@ -22,8 +22,8 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    LogoutHandler logoutHandler;
+//    @Autowired
+//    LogoutHandler logoutHandler;
 
     @Autowired
     DeniedHandler deniedHandler;
@@ -50,11 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .deleteCookies("JSESSIONID")
+//                .deleteCookies("JSESSIONID")
                 .logoutUrl("/logout")
-//                .logoutSuccessUrl("/login")
-                .logoutSuccessHandler(logoutHandler)
-                .permitAll()
+                .logoutSuccessUrl("/login")
+//                .logoutSuccessHandler(logoutHandler)
+//                .permitAll()
                 .and()
 //                .exceptionHandling().accessDeniedPage("/denied")
 //                .and()

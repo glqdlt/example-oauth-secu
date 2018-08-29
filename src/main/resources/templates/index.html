@@ -7,6 +7,7 @@
 </head>
 <body>
 <!-- thymeleaf 가 적용이 안되어서 파싱을 안해서 hasRole이 안먹히는 거 였다.-->
+<h3 th:text="${sessionId}"></h3>
 <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
     Logged in user: <span sec:authentication="name"></span> |
     Roles: <span sec:authentication="authorities"></span>

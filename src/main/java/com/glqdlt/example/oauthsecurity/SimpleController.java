@@ -7,16 +7,17 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 
 @Slf4j
 @Controller
 @RequestMapping("/")
+@ControllerAdvice
 public class SimpleController {
 
     @Autowired
@@ -25,34 +26,15 @@ public class SimpleController {
     @Autowired
     RoleRepo roleRepo;
 
-//    @PostMapping("/")
-//    public String savemember(Member member){
-//
-//        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-//        member.setUserPw(bCryptPasswordEncoder.encode(member.getUserPw()));
-//        member.setRole(roleRepo.findByRole("user"));
-//        memberRepo.save(member);
-//
-//        return "redirect:/";
-//    }
-
     @GetMapping("/")
-    public String home(Principal principal,HttpServletRequest httpServletRequest){
-
-        log.info("home========>");
-        log.info("principal : {}",principal.toString());
-        Object ss = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        log.info(ss.toString());
-        log.info("session id : {}",httpServletRequest.getSession().getId());
+    public String home(){
 
         return "/index";
     }
 
     @GetMapping("/login")
-    public String logins(HttpServletRequest httpServletRequest){
+    public String logins(HttpServletRequest httpServletRequest, HttpSession httpSession){
 
-        log.info("login========>");
-        log.info("serssion id :  {}",httpServletRequest.getSession().getId());
 
         return "/login";
     }
@@ -61,11 +43,17 @@ public class SimpleController {
     @GetMapping("/some")
     public String some(Principal principal,HttpServletRequest httpServletRequest){
 
-        log.info("some========>");
-        log.info("principal : {}",principal.toString());
-        Object ss = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        log.info(ss.toString());
-        log.info("session id : {}",httpServletRequest.getSession().getId());
         return "/some";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession httpSession){
+        httpSession.invalidate();
+        return "redirect:/login";
+    }
+
+    @ModelAttribute
+    public void addSessionId(Model model, HttpSession httpSession){
+        model.addAttribute("sessionId",httpSession.getId());
     }
 }
