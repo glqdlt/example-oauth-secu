@@ -2,6 +2,7 @@ package com.glqdlt.example.oauthsecurity;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -12,6 +13,7 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 import java.util.Locale;
 
 @Configuration
+@EnableAspectJAutoProxy
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override

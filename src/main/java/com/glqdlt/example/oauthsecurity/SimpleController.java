@@ -26,26 +26,29 @@ public class SimpleController {
     @Autowired
     RoleRepo roleRepo;
 
+    @SessionLogger
     @GetMapping("/")
-    public String home(){
+    public String home(HttpServletRequest httpServletRequest){
 
         return "/index";
     }
 
+    @SessionLogger
     @GetMapping("/login")
-    public String logins(HttpServletRequest httpServletRequest, HttpSession httpSession){
+    public String logins(HttpServletRequest httpServletRequest){
 
 
         return "/login";
     }
 
-
+    @SessionLogger
     @GetMapping("/some")
-    public String some(Principal principal,HttpServletRequest httpServletRequest){
+    public String some(HttpServletRequest httpServletRequest){
 
         return "/some";
     }
 
+    @SessionLogger
     @GetMapping("/logout")
     public String logout(HttpSession httpSession){
         httpSession.invalidate();
