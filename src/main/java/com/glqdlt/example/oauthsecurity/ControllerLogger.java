@@ -2,8 +2,8 @@ package com.glqdlt.example.oauthsecurity;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class ControllerLogger {
 
-    @After("@annotation(SessionLogger)")
+    @Before("@annotation(SessionLogger)")
     public void writeLogging(JoinPoint joinPoint){
 
         for(Object arg :joinPoint.getArgs()){
