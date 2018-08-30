@@ -46,6 +46,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .maximumSessions(1);
 
+//        아래 옵션을 보면 none으로 하면 세션 고정 방어를 위한 세션 변경을 하지 않는다.
+        http.sessionManagement()
+                .sessionFixation().none();
+//                .sessionFixation().newSession();
+//                .sessionFixation().changeSessionId()
+//                .sessionFixation().none();
+
         http
                 .authorizeRequests()
                 .antMatchers("/","/some").hasRole("ADMIN")
