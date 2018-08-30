@@ -34,6 +34,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/css/**", "/script/**", "image/**", "/fonts/**", "lib/**");
     }
 
+// oauth2 token을 외부에 저장하는 내용에 대한 포스트
+//    https://brunch.co.kr/@sbcoba/5
+
+
+//    spring boot 와 https 적용에 대한
+//    http://seongtak-yoon.tistory.com/10
+//    https://drissamri.be/blog/java/enable-https-in-spring-boot/
+//    https://www.thomasvitale.com/https-spring-boot-ssl-certificate/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        스프링 시큐리티와 서블릿 세션간의 매커니즘 차이
