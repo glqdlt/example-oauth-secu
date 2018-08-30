@@ -21,6 +21,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 //        registry.addViewController("/login").setViewName("login");
 //        registry.addViewController("/some").setViewName("some");
         registry.addViewController("/denied").setViewName("denied");
+        registry.addViewController("/invalid").setViewName("invalid-session");
     }
 
 }
