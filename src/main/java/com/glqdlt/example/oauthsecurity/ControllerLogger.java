@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class ControllerLogger {
 
-    @Before("@annotation(SessionLogger)")
+    @Before("@annotation(com.glqdlt.sessionlogger.SessionLogger)")
     public void writeLogging(JoinPoint joinPoint){
 
         for(Object arg :joinPoint.getArgs()){
